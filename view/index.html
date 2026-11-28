@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; connect-src https://www.googleapis.com; img-src 'self' blob: data:; font-src blob: data:; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style; frame-src 'self' https://accounts.google.com/">
+<meta name="referrer" content="no-referrer">
+<title>자기앞엽서 · PC에서 보기</title>
+<link rel="stylesheet" href="view.css">
+</head>
+<body>
+<header>
+  <h1>자기앞엽서 <span>PC에서 보기·인쇄</span></h1>
+  <p class="note">기록은 이 브라우저 안에서만 풀려요. 어떤 서버로도 보내지 않고, 창을 닫으면 사라져요.</p>
+</header>
+
+<main>
+  <section id="step-login" class="card">
+    <h2>1. 구글로 들어가기</h2>
+    <p>폰에서 드라이브 백업을 켠 것과 같은 구글 계정을 골라 주세요. 자기앞엽서 전용 폴더만 읽어요.</p>
+    <button id="login">구글로 들어가기</button>
+  </section>
+
+  <section id="step-pw" class="card" hidden>
+    <h2>2. 백업 비밀번호</h2>
+    <p>폰에서 드라이브 백업을 켤 때 정한 비밀번호예요. <span id="made"></span></p>
+    <form id="pw-form" autocomplete="off">
+      <input id="pw" type="password" placeholder="백업 비밀번호" autocomplete="off">
+      <button type="submit">열기</button>
+    </form>
+  </section>
+
+  <section id="step-view" hidden>
+    <nav id="pages"></nav>
+    <div class="viewer">
+      <div class="bar"><b id="title"></b><button id="print">인쇄·PDF로 저장</button></div>
+      <iframe id="frame" title="엽서 보기" sandbox="allow-same-origin allow-modals"></iframe>
+    </div>
+  </section>
+
+  <p id="msg" role="status"></p>
+</main>
+
+<footer>
+  <a href="../">개인정보처리방침</a> · 이 페이지는 정적 파일이라 기록을 저장하지 않아요.
+</footer>
+
+<script src="config.js"></script>
+<script src="view.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer onload="window.gisReady && window.gisReady()"></script>
+</body>
+</html>
